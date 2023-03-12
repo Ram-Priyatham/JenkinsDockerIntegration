@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: cicd-version
-        image: rampriyatham/demo-test:v0.2.0
+        image: rampriyatham/demo-test:v0.3.0
         ports:
         - containerPort: 8080
 
