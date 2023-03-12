@@ -15,7 +15,7 @@ pipeline {
           echo "${params.AppVersion}"
           // echo 'sh "git --version"'
           // git --version
-          git(branch: 'master', url: 'https://github.com/Ram-Priyatham/JenkinsDockerIntegration')
+          git(branch: '''refs/tags/"${params.AppVersion}"''', url: 'https://github.com/Ram-Priyatham/JenkinsDockerIntegration')
       }
     }
     stage('Docker Build') {
