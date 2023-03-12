@@ -10,6 +10,11 @@ pipeline {
     )
   }
   stages {
+    stage("Clone Repository"){
+      steps {
+          git branch: 'refs/tags/${params.AppVersion}', url: 'https://github.com/Ram-Priyatham/JenkinsDockerIntegration'
+      }
+    }
     stage('Docker Build') {
       steps {
       	sh 'docker build -t rampriyatham/demo-test:${params.AppVersion} .'
