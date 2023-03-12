@@ -10,11 +10,11 @@ pipeline {
     )
   }
   stages {
-    stage('Clear Workspace') {
-      steps {
-        deleteDir()
-      }
-    }
+    // stage('Clear Workspace') {
+    //   steps {
+    //     deleteDir()
+    //   }
+    // }
     stage("Clone Repository"){
       steps {
         script {
@@ -30,7 +30,7 @@ pipeline {
     stage('Docker Build') {
       steps {
         script{
-          sh "cd JenkinsDockerIntegration"
+          // sh "cd JenkinsDockerIntegration"
           sh "docker build -t rampriyatham/demo-test:${params.AppVersion} ."
         }
       }
