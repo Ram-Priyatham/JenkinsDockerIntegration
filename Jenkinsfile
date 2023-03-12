@@ -17,8 +17,8 @@ pipeline {
           echo "${params.AppVersion}"
           // echo 'sh "git --version"'
           // git --version
-          // sh -c "git clone https://github.com/Ram-Priyatham/JenkinsDockerIntegration --branch refs/tags/${params.AppVersion}"
-          git(branch: "refs/tags/v0.2.0", url: 'https://github.com/Ram-Priyatham/JenkinsDockerIntegration')
+          sh  -c "/usr/bin/git clone --branch 'v0.1.0' https://github.com/Ram-Priyatham/JenkinsDockerIntegration/"
+          // git(branch: "refs/tags/v0.2.0", url: 'https://github.com/Ram-Priyatham/JenkinsDockerIntegration')
         }
       }
     }
