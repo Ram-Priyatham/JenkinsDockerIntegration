@@ -13,7 +13,7 @@ pipeline {
     stage("Clone Repository"){
       steps {
         script {
-          def tag = ${params.AppVersion}
+          def tag = params.AppVersion
           echo "${params.AppVersion}"
           // echo 'sh "git --version"'
           // git --version
