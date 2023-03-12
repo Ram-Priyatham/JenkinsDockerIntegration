@@ -5,7 +5,7 @@ pipeline {
   parameters {
     choice(
       name: 'AppVersion',
-      choices: ['Version1', 'Version2', 'Version3'],
+      choices: ['v0.1.0', 'v0.2.0', 'v0.3.0'],
       description: 'Select the version'
     )
   }
