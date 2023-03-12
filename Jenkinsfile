@@ -18,18 +18,20 @@ pipeline {
     stage("Clone Repository"){
       steps {
         script {
+          
           def tag = params.AppVersion
           echo "${params.AppVersion}"
-          // echo 'sh "git --version"'
-          // git --version
-          sh  "/usr/bin/git clone --branch ${params.AppVersion} https://github.com/Ram-Priyatham/JenkinsDockerIntegration/"
-          // git(branch: "refs/tags/v0.2.0", url: 'https://github.com/Ram-Priyatham/JenkinsDockerIntegration')
+          // sh  "/usr/bin/git clone --branch ${params.AppVersion} https://github.com/Ram-Priyatham/JenkinsDockerIntegration/"
+          git(branch: 'master', url: 'https://github.com/Ram-Priyatham/JenkinsDockerIntegration')
+          sh "git checkout tags/${params.AppVersion} -b ${params.AppVersion}"
         }
       }
     }
     stage('Docker Build') {
       steps {
         script{
+          def releaseName = sh(returnStdout: true, script: 'git describe --abbrev=0 --tags').trim()
+          // def dockerImageName = "example/:${releaseName}"
           // sh "cd JenkinsDockerIntegration"
           sh "docker build -t rampriyatham/demo-test:${params.AppVersion} ."
         }
