@@ -29,7 +29,12 @@ pipeline {
     }
     stage('Docker Build') {
       steps {
-      	sh "docker build -t rampriyatham/demo-test:${params.AppVersion} ."
+        script{
+          def repoUrl = 'https://github.com/Ram-Priyatham/JenkinsDockerIntegration/'
+          def repoName = new groovy.io.File(repoUrl).name
+          sh "cd ${repoName}"
+          sh "docker build -t rampriyatham/demo-test:${params.AppVersion} ."
+        }
       }
     }
     stage('Docker Push') {
