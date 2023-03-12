@@ -13,11 +13,11 @@ pipeline {
     stage("Clone Repository"){
       steps {
         script {
-          def tag = "refs/tags/${params.AppVersion}"
+          def tag = "${params.AppVersion}"
           echo "${params.AppVersion}"
           // echo 'sh "git --version"'
           // git --version
-          git(tag: tag, url: 'https://github.com/Ram-Priyatham/JenkinsDockerIntegration')
+          git(branch: tag, url: 'https://github.com/Ram-Priyatham/JenkinsDockerIntegration')
         }
       }
     }
@@ -34,5 +34,6 @@ pipeline {
         }
       }
     }
+    stage('')
   }
 }
