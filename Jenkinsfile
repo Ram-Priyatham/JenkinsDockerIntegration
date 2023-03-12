@@ -37,4 +37,10 @@ pipeline {
     }
     // stage('')
   }
+  post(
+    cleanup {
+      echo "Clean up in post work space"
+      cleanWs()
+    }
+  )
 }
