@@ -23,7 +23,7 @@ pipeline {
     }
     stage('Docker Build') {
       steps {
-      	sh 'docker build -t rampriyatham/demo-test:${params.AppVersion} .'
+      	sh "docker build -t rampriyatham/demo-test:${params.AppVersion} ."
       }
     }
     stage('Docker Push') {
