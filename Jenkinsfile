@@ -13,7 +13,9 @@ pipeline {
     stage("Clone Repository"){
       steps {
           echo "${params.AppVersion}"
-          git branch: "refs/tags/${params.AppVersion}", url: 'https://github.com/Ram-Priyatham/JenkinsDockerIntegration'
+          sh "git --version"
+          git --version
+          // git branch: '''refs/tags/${params.AppVersion}''', url: 'https://github.com/Ram-Priyatham/JenkinsDockerIntegration'
       }
     }
     stage('Docker Build') {
