@@ -10,6 +10,11 @@ pipeline {
     )
   }
   stages {
+    stage('Clear Workspace') {
+      steps {
+        deleteDir()
+      }
+    }
     stage("Clone Repository"){
       steps {
         script {
@@ -37,10 +42,4 @@ pipeline {
     }
     // stage('')
   }
-  post(
-    cleanup {
-      echo "Clean up in post work space"
-      cleanWs()
-    }
-  )
 }
