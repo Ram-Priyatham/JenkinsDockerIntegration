@@ -52,8 +52,8 @@ pipeline {
       steps{
         script{
           // sh "kubectl create namespace cicd-task"
-          sh "kubectl apply -f deployment.yaml --namespace=cicd-task"
-          sh "kubectl apply -f service.yaml -n cicd-task"
+          sh "kubectl apply -f manifests/deployment.yaml --namespace=cicd-task"
+          sh "kubectl apply -f manifests/service.yaml -n cicd-task"
         }
       }
     }
