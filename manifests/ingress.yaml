@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: cicd-ingress
+  labels:
+    app: cicdapp
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: cicd-app.com
+    http:
+      paths:
+      - pathType: Prefix
+        path: /
+        backend:
+          service:
+            name: cicd-service
+            port: 
+              number: 8081

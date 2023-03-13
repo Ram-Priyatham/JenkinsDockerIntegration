@@ -48,14 +48,14 @@ pipeline {
     // withKubeConfig([credentialsId: 'minikube', serverUrl: 'https://192.168.49.2:8443', clusterName: 'minikube']) {
     //         sh "echo '${editedManifest}' | kubectl apply -f -"
     //       }
-    stage('Docker Run'){
-      steps{
-        script{
-          // sh "kubectl create namespace cicd-task"
-          sh "kubectl apply -f manifests/deployment.yaml --namespace=cicd-task"
-          sh "kubectl apply -f manifests/service.yaml -n cicd-task"
-        }
-      }
-    }
+    // stage('Docker Run'){
+    //   steps{
+    //     script{
+    //       // sh "kubectl create namespace cicd-task"
+    //       sh "kubectl apply -f manifests/deployment.yaml --namespace=cicd-task"
+    //       sh "kubectl apply -f manifests/service.yaml -n cicd-task"
+    //     }
+    //   }
+    // }
   }
 }
