@@ -23,7 +23,7 @@ pipeline {
           echo "${params.AppVersion}"
           // sh  "/usr/bin/git clone --branch ${params.AppVersion} https://github.com/Ram-Priyatham/JenkinsDockerIntegration/"
           git(branch: 'master', url: 'https://github.com/Ram-Priyatham/JenkinsDockerIntegration')
-          sh "git checkout tags/${params.AppVersion} -b ${params.AppVersion}"
+          sh "git checkout tags/${params.AppVersion} -b"
         }
       }
     }
@@ -45,6 +45,17 @@ pipeline {
         }
       }
     }
-    // stage('')
+    // withKubeConfig([credentialsId: 'minikube', serverUrl: 'https://192.168.49.2:8443', clusterName: 'minikube']) {
+    //         sh "echo '${editedManifest}' | kubectl apply -f -"
+    //       }
+    stage('Docker Run'){
+      steps{
+        script{
+          sh "kubectl create namespace cicd-task"
+          sh "kubectl apply -f deployment.yaml --namespace=cicd-task"
+          sh "kubectl apply -f service.yaml -n cicd-task"
+        }
+      }
+    }
   }
 }
