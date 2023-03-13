@@ -51,7 +51,7 @@ pipeline {
     stage('Docker Run'){
       steps{
         script{
-          sh "kubectl create namespace cicd-task"
+          // sh "kubectl create namespace cicd-task"
           sh "kubectl apply -f deployment.yaml --namespace=cicd-task"
           sh "kubectl apply -f service.yaml -n cicd-task"
         }
