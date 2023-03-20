@@ -1,5 +1,5 @@
 @Library('my-shared-library') _
-pipeline {
+node {
   agent any
   parameters {
     choice(
