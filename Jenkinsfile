@@ -3,7 +3,9 @@ pipeline{
   agent any
   stages{
     stage("test"){
-      test();
+      steps{
+        test();
+      }
     }
   }
 }
