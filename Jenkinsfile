@@ -1,5 +1,5 @@
 @Library('my-shared-library') _
-node{
+pipeline{
   agent any
   stages{
     stage("test"){
